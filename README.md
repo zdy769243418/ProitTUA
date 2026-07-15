@@ -6,7 +6,7 @@ This repository contains the runnable code, processed data files, target-user fi
 
 ## Overview
 
-ProitTUA studies targeted user attacks in federated recommendation. The goal is to promote a small set of target items to a specified group of target users while limiting unintended exposure to non-target users. To achieve this, ProitTUA uses an auxiliary-domain modeling module to infer category-aware popular items, and then constructs malicious gradients that continuously push target items toward the preference region of the selected target-user group during federated training.
+ProitTUA studies targeted user attacks in federated recommendation. The goal is to promote a small set of target items to a specified group of target users while limiting unintended exposure to non-target users. To achieve this, ProitTUA uses an auxiliary-domain modeling module to infer category-aware popular items, and then constructs malicious gradients that continuously push target items toward the preference region of the selected target-user group during federated training. This release also includes the proposed gradient-dynamics-based defense mechanism, which detects suspicious item-gradient fluctuations, traces dominant clients, and excludes suspicious clients from aggregation.
 
 ### Framework
 
@@ -63,10 +63,17 @@ By default, the script uses CPU. To run on GPU, pass a CUDA device explicitly:
 python main.py --device cuda
 ```
 
-The training log is written to:
+Run ProitTUA with the proposed defense mechanism:
+
+```bash
+python main.py --defense_strategy GradientDynamics
+```
+
+The training logs are written to different files according to the experiment mode:
 
 ```text
-Result/ML-1M.txt
+Result/ML-1M_Attack.txt          # Attack only
+Result/ML-1M_Attack_Defense.txt  # Attack with defense
 ```
 
 Each iteration reports recommendation metrics and attack metrics:
@@ -90,7 +97,8 @@ The default configuration in `parse.py` follows the released ProitTUA setting:
 - Target item category: `4`
 - Target users: `target_user.json`
 - Number of mined popular items per category: `4`
-- Attack strength: `attack_popular_factor=2.25`, `attack_grad_scale=6.0`, `attack_decay_ratio=0.4`
+- Attack strength: `attack_popular_factor=2.25`, `attack_grad_scale=6.0`, `attack_decay_ratio=0.4` for decaying `attack_grad_scale`
+- Defense strategy: `NoDefense` by default
 
 You can override these parameters from the command line. For example:
 

@@ -44,7 +44,8 @@ def main():
 
     result_dir = Path(args.result_dir)
     result_dir.mkdir(parents=True, exist_ok=True)
-    result = result_dir / f'{args.dataset}.txt'
+    result_suffix = 'Attack' if args.defense_strategy == 'NoDefense' else 'Attack_Defense'
+    result = result_dir / f'{args.dataset}_{result_suffix}.txt'
     items_emb_start_attack = []
 
     with open(result, 'w') as f:
@@ -61,6 +62,7 @@ def main():
                 total_loss.extend(loss)
             total_loss = np.mean(total_loss).item()
 
+            server.apply_defense_after_epoch(epoch, len(clients))
             items_emb_start_attack.append(items_emb)
             auxiliary_miner.train_stage1(epoch, items_emb)
 
@@ -100,6 +102,7 @@ def main():
                 total_loss.extend(loss)
             total_loss = np.mean(total_loss).item()
 
+            server.apply_defense_after_epoch(epoch, len(clients))
             t2 = time()
 
             test_result_hr, test_result_ndcg, test_result_mrr, AP, TCR, AER, ACR, rank1, rank2 = server.eval_(clients,

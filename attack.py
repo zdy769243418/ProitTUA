@@ -11,7 +11,7 @@ def get_attack_strength(epoch):
     progress = (epoch - args.launch - 1) / decay_steps
     progress = min(max(progress, 0.0), 1.0)
     ratio = args.attack_decay_ratio + (1 - args.attack_decay_ratio) * 0.5 * (1 + math.cos(math.pi * progress))
-    return args.attack_popular_factor * ratio, args.attack_grad_scale * ratio
+    return args.attack_popular_factor, args.attack_grad_scale * ratio
 
 
 class OurAttackClient(nn.Module):

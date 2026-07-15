@@ -1,6 +1,6 @@
 # ProitTUA
 
-Official implementation of **ProitTUA**, `Target User Attack on Federated Recommender Systems with Proxy Items and Its Countermeasure`. This work has been published in **ACM Transactions on Information Systems (TOIS)**.
+Official implementation of **ProitTUA**, the paper titled **"Target User Attack on Federated Recommender Systems with Proxy Items and Its Countermeasure"**, published in **ACM Transactions on Information Systems (TOIS)**.
 
 This repository contains the runnable code, processed data files, target-user file, framework figure, and a case-study PDF for reproducing the default ProitTUA experiment.
 

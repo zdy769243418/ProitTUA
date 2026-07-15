@@ -54,7 +54,7 @@ def parse_args():
 
     parser.add_argument('--batch_size', type=int, default=256, help='Batch size.')
     parser.add_argument('--clients_limit', type=float, default=0.005, help='Limit of proportion of malicious clients.')
-    parser.add_argument('--attack_popular_factor', type=float, default=2.25,
+    parser.add_argument('--attack_popular_factor', type=float, default=2.2,
                         help='Initial weight applied to the mined popular-item embedding in attack gradients.')
     parser.add_argument('--attack_grad_scale', type=float, default=6.0,
                         help='Initial scale factor applied to attack gradients.')

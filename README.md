@@ -2,7 +2,13 @@
 
 Official implementation of **ProitTUA**, a targeted user attack framework for federated recommendation.
 
-This repository contains the runnable code, processed data files, target-user file, paper PDF, framework figure, and a case-study document for reproducing the default ProitTUA experiment.
+This repository contains the runnable code, processed data files, target-user file, paper PDF, framework figure, and a case-study PDF for reproducing the default ProitTUA experiment.
+
+## Overview
+
+ProitTUA studies targeted user attacks in federated recommendation, where malicious clients aim to promote a small set of target items to a specified group of target users while limiting unintended exposure to non-target users. The method uses an auxiliary-domain modeling module to infer category-aware popular items, and then constructs attack gradients that continuously push target items toward the preference region of the selected target-user group during federated training.
+
+The released code reproduces the default ProitTUA workflow on ML-1M: benign warm-up training, auxiliary-domain popular-item mining, malicious-client injection, and per-round attack evaluation. The included [case-study.pdf](case-study.pdf) provides a concrete example of how ProitTUA affects target-item exposure and user-level recommendation behavior.
 
 ## Resources
 

@@ -1,6 +1,6 @@
 # ProitTUA
 
-Official implementation of **ProitTUA**, a targeted user attack framework for federated recommendation.
+Official implementation of **ProitTUA**, a targeted user attack framework for federated recommendation. This work has been published in **ACM Transactions on Information Systems (TOIS)**.
 
 This repository contains the runnable code, processed data files, target-user file, paper PDF, framework figure, and a case-study PDF for reproducing the default ProitTUA experiment.
 
